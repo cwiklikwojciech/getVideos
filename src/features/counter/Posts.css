@@ -1,0 +1,12 @@
+.outside {
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.inside {
+	width: 150px;
+	height: 100px;
+	background-color: red;
+}

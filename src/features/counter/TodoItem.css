@@ -1,0 +1,89 @@
+.todoItem {
+	margin-bottom: 15px;
+}
+/*
+.todoItem > p {
+	flex: 1;
+}
+.todoItem--done {
+	text-decoration: line-through;
+} */
+/* .todoItem {
+	position: relative;
+	padding: 3em 1em 1em;
+	border: 1px solid #d8d8d8;
+	margin: 1.5rem 0 0;
+}
+.list-group {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	padding-left: 0;
+	margin-bottom: 0;
+	border-radius: 0.25rem;
+}
+p {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+ol,
+ul,
+dl {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+.list-group-item:first-child {
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
+}
+.list-group-item {
+	position: relative;
+	display: block;
+	padding: 0.75rem 1.25rem;
+	background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+} */
+
+.pagination {
+	margin: 15px auto;
+	display: flex;
+	list-style: none;
+	outline: none;
+}
+.pagination > .active > a {
+	background-color: #47ccde;
+	border-color: #47ccde;
+	color: #fff;
+}
+.pagination > li > a {
+	border: 1px solid #47ccde;
+	padding: 5px 10px;
+	outline: none;
+	cursor: pointer;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+	background-color: #47ccde;
+	border-color: #47ccde;
+	outline: none;
+}
+.pagination > li > a,
+.pagination > li > span {
+	color: #47ccde;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span,
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+	border-radius: unset;
+}
+.pagination {
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+}
