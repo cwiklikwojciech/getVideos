@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {setCheck, setVideo} from './counterSlice'
 
+import ReactPlayer from 'react-player'
 
 import {
     Card, Button, CardImg, CardTitle, CardText, CardGroup,
@@ -12,9 +13,10 @@ import {
   import { Col } from 'react-grid-system';
 
   import ModalVideo from 'react-modal-video'
+  import ModalExample from "./reactPlayer";
 
 
-const Tiles = ({ id, loading , dispatch,image,title , like, view, published }) => {
+const Tiles = ({ id, loading , dispatch,image,title , like, view, published,video }) => {
 
   const [isOpen, setOpen] = useState(false)
   if (loading) {
@@ -26,28 +28,27 @@ const Tiles = ({ id, loading , dispatch,image,title , like, view, published }) =
     dispatch(setCheck(id))
     }
   
-    console.log(image);
+    let url =  `https://www.youtube.com/watch?v=${video}`;
     
 
   return (
     <>
-                
-                    <Col sm={6} key={id} >
+                    <Col  sm={6} >
                        <CardGroup>
                         <Card>
-                            <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
-                            <CardImg top src={image}  onClick={()=> setOpen(true)}  alt="Card image cap" />
-                        
+                            <CardImg top src={image}  alt="Card image cap" />
                             <CardBody>
                             <CardTitle tag="h5">{title}</CardTitle>
                             <CardSubtitle tag="h6" className="mb-2 text-muted">Published Data : {published}</CardSubtitle>
                             <CardText>View : {view} Like : {like}</CardText>
-                            <div onClick={handleCheck}>x</div>
+                            <button onClick={handleCheck}>Usuń</button>
+                            <ModalExample buttonLabel={'Zobacz!'} url={url} />
                             </CardBody>
                         </Card>
                         </CardGroup>
                         
                         </Col> 
+                        
                   </>      
   );
   

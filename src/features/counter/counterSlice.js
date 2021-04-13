@@ -13,10 +13,8 @@ const counterSlice = createSlice({
     
       setCheck: (state,action) => {
         let x=0;
-        console.log(action.payload);
           state.todoList.map(item => {
             if(action.payload === item.id){
-              console.log(x);
               state.todoList.splice(x,1);
             }
             x++;
@@ -24,13 +22,11 @@ const counterSlice = createSlice({
       },
 
       setVideo: (state,action) => {
-        console.log(action.payload);
         state.todoList.push(action.payload); 
         
     },
 
     setVisible: (state,action) => {
-      console.log(action.payload);
       state.isVisible = action.payload;
   },
   }

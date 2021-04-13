@@ -7,6 +7,9 @@ import {useDispatch} from 'react-redux'
 import {setCheck, setVideo} from './counterSlice'
 import { Container, Row, Col } from 'react-grid-system';
 
+import ReactPlayer from 'react-player'
+import ModalExample from "./reactPlayer";
+
 import './Posts.css'
 
 const Posts = ({ id, loading , dispatch,image,title , like, view, published ,video  }) => {
@@ -20,39 +23,53 @@ const Posts = ({ id, loading , dispatch,image,title , like, view, published ,vid
 
   const handleCheck = () => {
     dispatch(setCheck(id))
-    console.log("hey");
     }
-  
+    
+  let url =  `https://www.youtube.com/watch?v=${video}`;
 
   return (
+    <>
+  
     <ul className='list-group mb-4'>
-     <li key={id}  className='list-group-item'>
+     <li className='list-group-item'>
      <Container>
          <Row> 
       <Col sm={3}>
-      <div class="outside">
-        <div class="inside">
-        <img onClick={()=> setOpen(true)} src={image} alt="BigCo Inc. logo" />
+
+      
+      <div className="outside">
+        <div className="inside">
+       
+        <img className="thumbnail" src={image} alt="BigCo Inc. logo" /> 
+
+        
+      
         </div>		
     </div>
       
       </Col>
-      <Col sm={8}>
-        <h3>{title}</h3>
-        <h4>{like}</h4>
-        <h5>{view}</h5>
-        <h5>{published}</h5>
+      <Col sm={7}>
+        <h5>{title}</h5>
+        <h6>{like}</h6>
+        <h6>{view}</h6>
+        <h6>{published}</h6>
        
       </Col>
-      <div onClick={handleCheck}>x</div>
-      <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
-
+      <Col sm={2}>
+        <button onClick={handleCheck}>Usuń</button>
+        <ModalExample buttonLabel={'Zobacz!'} url={url} />
+      </Col>
+     
+     
       </Row> 
         </Container>
     
     </li>
      
     </ul>
+
+   
+            </>
   );
 };
 

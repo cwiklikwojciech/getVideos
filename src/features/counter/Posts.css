@@ -1,5 +1,4 @@
 .outside {
-	height: 150px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -8,5 +7,22 @@
 .inside {
 	width: 150px;
 	height: 100px;
-	background-color: red;
+}
+
+.player-wrapper {
+	position: relative;
+	padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.thumbnail {
+	width: 100%;
+}
+
+.btn {
+	padding: 0 !important;
 }

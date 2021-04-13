@@ -31,7 +31,13 @@ export function Counter() {
   }
 
   const addTodo = () => {
+
     console.log(`Adding ${lastPartAfterSign(incrementAmount)}`);
+
+    if(lastPartAfterSign(incrementAmount).length === 9){
+        fetch('https://vimeo.com/api/v2/video/181696349/json');
+        
+    } else{
     
     fetch(`https://www.googleapis.com/youtube/v3/videos?id=${lastPartAfterSign(incrementAmount)}&key=AIzaSyDPQ653rSjnsN9tmexU7CmkDKc5t_2t5Jo&part=snippet,contentDetails,statistics,status`)
         .then(response => response.json())
@@ -39,7 +45,7 @@ export function Counter() {
           dispatch(setVideo({
             itemView : data.items[0].statistics.viewCount,
             itemLike :  data.items[0].statistics.likeCount,
-            image: data.items[0].snippet.thumbnails.high.url,
+            image: data.items[0].snippet.thumbnails.medium.url,
             imageSmall: data.items[0].snippet.thumbnails.default.url,
             title : data.items[0].snippet.title,
             published : data.items[0].snippet.publishedAt,
@@ -48,6 +54,8 @@ export function Counter() {
             id: Date.now(),
            }))
         );
+
+          }
         
   }
 

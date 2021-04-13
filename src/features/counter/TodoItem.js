@@ -44,7 +44,6 @@ const TodoItem = ({list, isVisible}) => {
 
       const dispatch = useDispatch();
 
-      
 
     return (
     <>
@@ -53,10 +52,11 @@ const TodoItem = ({list, isVisible}) => {
                 <div className='container mt-5'>
                 {currentPosts.map(post => (
                    <Posts 
-                     id={post.id} 
+                     key={post.id} 
+                     id={post.id}
                      loading={loading}
                      dispatch={dispatch}
-                     image={post.imageSmall} 
+                     image={post.image} 
                      title={post.title} 
                      like={post.itemLike} 
                      view={post.itemView}
@@ -80,7 +80,8 @@ const TodoItem = ({list, isVisible}) => {
               
                {currentPostsTiles.map(post => (
                    <Tiles 
-                   id={post.id} 
+                   key={post.id} 
+                   id={post.id}
                    loading={loading} 
                    dispatch={dispatch} 
                    image={post.image} 

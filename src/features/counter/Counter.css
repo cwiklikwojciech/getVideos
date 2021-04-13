@@ -2,7 +2,7 @@
 	height: 50px;
 	width: 80%;
 	border-radius: 12px;
-	background-color: #ca1b1b;
+	background-color: rgb(0 123 255 / 25%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -28,5 +28,5 @@ button {
 	border: none;
 	border-radius: 10px !important;
 	height: 30px;
-	width: 50px;
+	width: 60px;
 }

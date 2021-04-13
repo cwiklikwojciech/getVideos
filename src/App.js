@@ -13,7 +13,6 @@ import { Container, Row, Col } from 'react-grid-system';
 function App() {
   const todoList = useSelector(selectTodoList);
   const isVisible = useSelector(selectIsVisible);
-  console.log(isVisible.isVisible);
   
   return (
     <div className="App">
