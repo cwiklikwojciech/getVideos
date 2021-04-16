@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 import {useDispatch} from 'react-redux'
-import {setCheck, setVideo} from './counterSlice'
+import {setCheck, setVideo, setFavorite} from './counterSlice'
 
 import ReactPlayer from 'react-player'
 
@@ -16,24 +16,49 @@ import {
   import ModalExample from "./reactPlayer";
 
 
-const Tiles = ({ id, loading , dispatch,image,title , like, view, published,video }) => {
+const Tiles = ({ id, loading , dispatch,image,title , like, view, published,video,favorite, isFevorite }) => {
 
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setOpen] = useState(true)
   if (loading) {
     return <h2>Loading...</h2>;
   }
 
 
-  const handleCheck = () => {
-    dispatch(setCheck(id))
+    const handleCheck = () => {
+        dispatch(setCheck(id))
+        }
+
+    const handleFavorite = () => {
+        dispatch(setFavorite(id))
     }
   
-    let url =  `https://www.youtube.com/watch?v=${video}`;
+    let  url,VimeoOrYoutube = true;
+    if(video.length <= 9 ) {
+        url =  `https://player.vimeo.com/video/58385453?badge=0`;
+        VimeoOrYoutube = false;
+      }else{
+      url =  `https://www.youtube.com/watch?v=${video}`;
+      VimeoOrYoutube = true;
+      }
+
+      const favoriteTrue = {
+        background: 'red'
+      };
+      const favoriteFalse = {
+        background: 'none'
+      };
+
+      const x = {
+        display: 'none'
+      };
+      const y = {
+        display: 'block'
+      };
     
 
   return (
     <>
-                    <Col  sm={6} >
+                    <Col  sm={6} style={favorite && isFevorite ? (x) : (y)}>
                        <CardGroup>
                         <Card>
                             <CardImg top src={image}  alt="Card image cap" />
@@ -42,7 +67,8 @@ const Tiles = ({ id, loading , dispatch,image,title , like, view, published,vide
                             <CardSubtitle tag="h6" className="mb-2 text-muted">Published Data : {published}</CardSubtitle>
                             <CardText>View : {view} Like : {like}</CardText>
                             <button onClick={handleCheck}>Usuń</button>
-                            <ModalExample buttonLabel={'Zobacz!'} url={url} />
+                            <button onClick={handleFavorite} style={favorite ? (favoriteFalse) : (favoriteTrue)}>Ulubione</button>
+                            <ModalExample buttonLabel={'Zobacz!'} url={url} VimeoOrYoutube={VimeoOrYoutube}/>
                             </CardBody>
                         </Card>
                         </CardGroup>

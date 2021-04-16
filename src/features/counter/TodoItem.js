@@ -13,7 +13,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import {useDispatch} from 'react-redux'
 
 
-const TodoItem = ({list, isVisible}) => {
+const TodoItem = ({list, isVisible , isFevorite}) => {
     
 
     const [posts, setPosts] = useState([]);
@@ -21,6 +21,8 @@ const TodoItem = ({list, isVisible}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(5);
     const [postsPerPageTiles] = useState(4);
+
+   
   
     useEffect(() => {
         const fetchPosts = async () => {
@@ -43,6 +45,13 @@ const TodoItem = ({list, isVisible}) => {
       const paginate = pageNumber => setCurrentPage(pageNumber);
 
       const dispatch = useDispatch();
+      let fevoriteAmoutn = 0;
+      for(let i = 0; i<list.length;i++){
+        if(list[i].favorite && isFevorite === true) {
+            fevoriteAmoutn++;
+        }
+      }
+
 
 
     return (
@@ -61,13 +70,15 @@ const TodoItem = ({list, isVisible}) => {
                      like={post.itemLike} 
                      view={post.itemView}
                      published={post.published}    
+                     favorite={post.favorite}
                      video={post.video}
+                     isFevorite={isFevorite}
                      />
                 ))}
                 
                 <Pagination 
                     postsPerPage={postsPerPage}
-                    totalPosts={list.length}
+                    totalPosts={list.length }
                     paginate={paginate}
                 />
                 </div>
@@ -79,18 +90,20 @@ const TodoItem = ({list, isVisible}) => {
             <Row> 
               
                {currentPostsTiles.map(post => (
-                   <Tiles 
-                   key={post.id} 
-                   id={post.id}
-                   loading={loading} 
-                   dispatch={dispatch} 
-                   image={post.image} 
-                   title={post.title} 
-                   like={post.itemLike} 
-                   view={post.itemView}
-                   published={post.published}  
-                   video={post.video}
-                   />
+                    <Tiles 
+                    key={post.id} 
+                    id={post.id}
+                    loading={loading} 
+                    dispatch={dispatch} 
+                    image={post.image} 
+                    title={post.title} 
+                    like={post.itemLike} 
+                    view={post.itemView}
+                    published={post.published}  
+                    favorite={post.favorite}
+                    video={post.video}
+                    isFevorite={isFevorite}
+                    />
                 ))}
 
             </Row>
@@ -98,7 +111,7 @@ const TodoItem = ({list, isVisible}) => {
 
             <Pagination className="pagination"
                     postsPerPage={postsPerPageTiles}
-                    totalPosts={list.length}
+                    totalPosts={ list.length }
                     paginate={paginate}
                 />
 
