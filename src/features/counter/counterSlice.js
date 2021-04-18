@@ -7,6 +7,7 @@ const initialState = {
   todoList: [],
   isVisible: 0,
   isFevorite : false,
+  isSort : false,
 }
 
 
@@ -34,6 +35,9 @@ const counterSlice = createSlice({
           }
           x++;
         })
+        
+        
+
       },
 
       setClear: (state) => {
@@ -45,6 +49,10 @@ const counterSlice = createSlice({
         
     },
 
+    setSort: (state, action) => {
+      state.isSort = action.payload;
+    },
+
     setVisible: (state,action) => {
       state.isVisible = action.payload;
   },
@@ -54,11 +62,12 @@ const counterSlice = createSlice({
   }
 });
 
-export const { saveTodo , setCheck , setVideo, setVisible,setFavorite,setClear,setFevorite } = counterSlice.actions;
+export const { saveTodo , setCheck , setVideo, setVisible,setFavorite,setClear,setFevorite, setSort } = counterSlice.actions;
 
 export const selectTodoList = state => state.todos.todoList
 export const selectIsVisible = state => state.todos.isVisible
 export const selectIsFevorite = state => state.todos.isFevorite
+export const selectIsSort = state => state.todos.isSort
 
 
 export default counterSlice.reducer;

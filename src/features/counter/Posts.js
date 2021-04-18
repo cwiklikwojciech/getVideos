@@ -13,7 +13,7 @@ import ModalExample from "./reactPlayer";
 
 import './Posts.css'
 
-const Posts = ({ id, loading , dispatch,image,title , like, view, published ,video, favorite  }) => {
+const Posts = ({ id, loading , dispatch,image,title , like, view, published ,video, favorite, isFevorite  }) => {
   const [isOpen, setOpen] = useState(false)
  
 
@@ -47,10 +47,17 @@ const Posts = ({ id, loading , dispatch,image,title , like, view, published ,vid
       VimeoOrYoutube = true;
       }
 
+      const x = {
+        display: 'none'
+      };
+      const y = {
+        display: 'block'
+      };
+
   return (
     <>
-  
-    <ul className='list-group mb-4' >
+   {/* style={favorite && isFevorite ? (y) : isFevorite ? (x) : (y)}  */}
+    <ul className='list-group mb-4'>
      <li className='list-group-item'>
      <Container>
          <Row> 

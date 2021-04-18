@@ -57,8 +57,9 @@ const Tiles = ({ id, loading , dispatch,image,title , like, view, published,vide
     
 
   return (
-    <>
-                    <Col  sm={6} style={favorite && isFevorite ? (x) : (y)}>
+    <>  
+                    <Col  sm={6} >
+                    {/* style={favorite && isFevorite ? (y) : isFevorite ? (x) : (y)} */}
                        <CardGroup>
                         <Card>
                             <CardImg top src={image}  alt="Card image cap" />
@@ -67,7 +68,7 @@ const Tiles = ({ id, loading , dispatch,image,title , like, view, published,vide
                             <CardSubtitle tag="h6" className="mb-2 text-muted">Published Data : {published}</CardSubtitle>
                             <CardText>View : {view} Like : {like}</CardText>
                             <button onClick={handleCheck}>Usuń</button>
-                            <button onClick={handleFavorite} style={favorite ? (favoriteFalse) : (favoriteTrue)}>Ulubione</button>
+                            <button onClick={handleFavorite} style={favorite ? (favoriteTrue) : (favoriteFalse)}>Ulubione</button>
                             <ModalExample buttonLabel={'Zobacz!'} url={url} VimeoOrYoutube={VimeoOrYoutube}/>
                             </CardBody>
                         </Card>

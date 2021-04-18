@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {setClear,  setVideo , setVisible, setFevorite} from './counterSlice';
+import {setClear,  setVideo , setVisible, setFevorite, setSort} from './counterSlice';
 
 import './Counter.css';
 
@@ -9,6 +9,7 @@ export function Counter() {
   const [incrementAmount, setIncrementAmount] = useState('');
   const [isVisible, setIsVisible] = useState(true);
   const [isFevorite, setIsFevorite] = useState(true);
+  const [isSort, setIsSort] = useState(false);
 
     const lastPartAfterSign = (str, separator='/') => {
       var stringSarach = str; 
@@ -66,6 +67,13 @@ export function Counter() {
 
       dispatch(setFevorite ({
         isFevorite : isFevorite
+      }))
+    }
+
+    const handleSort = () => {
+      setIsSort(!isSort)
+      dispatch(setSort({
+        isSort : isSort
       }))
     }
 
@@ -133,8 +141,9 @@ export function Counter() {
     <button style = {isFevorite ? (x) : (y)}
         onClick={handleFevorite}>
     Fev </button>
-    
-
+    <button 
+        onClick={handleSort}>
+    Sort </button>
     
 </div>
   );

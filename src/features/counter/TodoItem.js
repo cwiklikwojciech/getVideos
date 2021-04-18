@@ -13,7 +13,7 @@ import { Container, Row, Col } from 'react-grid-system';
 import {useDispatch} from 'react-redux'
 
 
-const TodoItem = ({list, isVisible , isFevorite}) => {
+const TodoItem = ({list, isVisible , isFevorite, isSort}) => {
     
 
     const [posts, setPosts] = useState([]);
@@ -21,6 +21,53 @@ const TodoItem = ({list, isVisible , isFevorite}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(5);
     const [postsPerPageTiles] = useState(4);
+    
+
+        const objectMap = (obj, fn) =>
+        Object.fromEntries(
+          Object.entries(obj).map(
+             ([k, v], i) => [k, fn(v, k, i)] 
+          )
+        )
+        
+        function clean(obj) {
+          for (var propName in obj) {
+            if (obj[propName] === null || obj[propName] === undefined) {
+              delete obj[propName];
+            }
+          }
+          return obj
+        }
+      
+      const obj = clean(objectMap(list, v => isFevorite ?  v.favorite ? v : null : v));
+
+      function dynamicSort(property) {
+        var sortOrder = 1;
+        if(property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+        return function (a,b) {
+            /* next line works with strings and numbers, 
+             * and you may want to customize it to your needs
+             */
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result * sortOrder;
+        }
+     }
+
+
+
+      let obj1;
+
+      isSort ? obj1 = Object.values(obj).sort(dynamicSort("published")) : obj1 = obj;
+     
+     console.log("Is Sort: " + isSort);
+
+
+      console.log(obj1);
+      console.log(list);
+      //console.log(newObject);
 
    
   
@@ -34,24 +81,36 @@ const TodoItem = ({list, isVisible , isFevorite}) => {
         fetchPosts();
       }, []);
 
-      const indexOfLastPost = currentPage * postsPerPage;
-      const indexOfFirstPost = indexOfLastPost - postsPerPage;
-      const currentPosts = list.slice(indexOfFirstPost, indexOfLastPost);
 
-      const indexOfLastPostTiles = currentPage * postsPerPageTiles;
-      const indexOfFirstPostTiles = indexOfLastPostTiles - postsPerPageTiles;
-      const currentPostsTiles = list.slice(indexOfFirstPostTiles, indexOfLastPostTiles);
-
-      const paginate = pageNumber => setCurrentPage(pageNumber);
 
       const dispatch = useDispatch();
       let fevoriteAmoutn = 0;
-      for(let i = 0; i<list.length;i++){
-        if(list[i].favorite && isFevorite === true) {
+
+      
+
+      for(let i = 0; i<Object.values(obj1).length;i++){
+        if(Object.values(obj1)[i].favorite  === true) {
             fevoriteAmoutn++;
         }
       }
 
+      console.log("Fev amount" + fevoriteAmoutn);
+
+      let totalPosts = isFevorite ? fevoriteAmoutn : Object.values(obj1).length;
+
+      console.log("Total Post" + totalPosts);
+
+      const indexOfLastPost = currentPage * postsPerPage;
+      const indexOfFirstPost = indexOfLastPost - postsPerPage;
+      const currentPosts = Object.values(obj1).slice(indexOfFirstPost, indexOfLastPost);
+
+      
+
+      const indexOfLastPostTiles = currentPage * postsPerPageTiles;
+      const indexOfFirstPostTiles = indexOfLastPostTiles - postsPerPageTiles;
+      const currentPostsTiles = Object.values(obj1).slice(indexOfFirstPostTiles, indexOfLastPostTiles);
+
+      const paginate = pageNumber => setCurrentPage(pageNumber);
 
 
     return (
@@ -60,6 +119,7 @@ const TodoItem = ({list, isVisible , isFevorite}) => {
             isVisible ?  (
                 <div className='container mt-5'>
                 {currentPosts.map(post => (
+                  
                    <Posts 
                      key={post.id} 
                      id={post.id}
@@ -78,7 +138,7 @@ const TodoItem = ({list, isVisible , isFevorite}) => {
                 
                 <Pagination 
                     postsPerPage={postsPerPage}
-                    totalPosts={list.length }
+                    totalPosts={totalPosts}
                     paginate={paginate}
                 />
                 </div>
@@ -111,7 +171,7 @@ const TodoItem = ({list, isVisible , isFevorite}) => {
 
             <Pagination className="pagination"
                     postsPerPage={postsPerPageTiles}
-                    totalPosts={ list.length }
+                    totalPosts={totalPosts}
                     paginate={paginate}
                 />
 
