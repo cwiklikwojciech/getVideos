@@ -25,7 +25,8 @@
     "react-responsive-modal": "^6.0.1",
     "react-scripts": "4.0.3",
     "react-vimeo-embed": "^0.9.0",
-    "reactstrap": "^8.9.0"
+    "reactstrap": "^8.9.0",
+    "redux-localstorage-simple": "^2.4.0"
   },
   "scripts": {
     "predeploy": "npm run build",

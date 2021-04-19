@@ -21,6 +21,37 @@ const TodoItem = ({list, isVisible , isFevorite, isSort}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(5);
     const [postsPerPageTiles] = useState(4);
+
+
+
+    useEffect(() => {
+      const data = localStorage.getItem("state");
+      if (data) {
+        setPosts(JSON.parse(data));
+      }
+      console.log("Pierwszy effect")
+     
+    }, []);
+
+
+    useEffect(() => {
+      console.log("Drugi effect")
+      const fetchPosts = async () => {
+      setLoading(true);
+        // const data = localStorage.getItem("state");
+        // if (data) {
+        //   setPosts(JSON.parse(data));
+        // }
+
+      
+      setPosts(list);  
+      setLoading(false);
+      };
+
+      fetchPosts();
+    });
+
+    
     
 
         const objectMap = (obj, fn) =>
@@ -38,8 +69,10 @@ const TodoItem = ({list, isVisible , isFevorite, isSort}) => {
           }
           return obj
         }
+
+        
       
-      const obj = clean(objectMap(list, v => isFevorite ?  v.favorite ? v : null : v));
+      const obj = clean(objectMap(posts, v => isFevorite ?  v.favorite ? v : null : v));
 
       function dynamicSort(property) {
         var sortOrder = 1;
@@ -58,28 +91,23 @@ const TodoItem = ({list, isVisible , isFevorite, isSort}) => {
 
 
 
-      let obj1;
+      var obj1;
 
       isSort ? obj1 = Object.values(obj).sort(dynamicSort("published")) : obj1 = obj;
      
-     console.log("Is Sort: " + isSort);
+      console.log("Is Sort: " + isSort);
 
 
-      console.log(obj1);
+      
+     
+      // var retrievedObject = localStorage.getItem('state');
+      // console.log(JSON.parse(retrievedObject));
       console.log(list);
       //console.log(newObject);
 
    
   
-    useEffect(() => {
-        const fetchPosts = async () => {
-          setLoading(true);
-          setPosts(list);
-          setLoading(false);
-        };
-    
-        fetchPosts();
-      }, []);
+   
 
 
 

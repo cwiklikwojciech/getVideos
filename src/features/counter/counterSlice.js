@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import TodoItem from './TodoItem';
 
-
+const data = localStorage.getItem("state");
+console.log(JSON.parse(data));
 
 const initialState = {
-  todoList: [],
+  todoList: JSON.parse(data),
   isVisible: 0,
   isFevorite : false,
   isSort : false,
@@ -36,17 +37,17 @@ const counterSlice = createSlice({
           x++;
         })
         
-        
-
       },
 
       setClear: (state) => {
         state.todoList.splice(0, state.todoList.length);
+        localStorage.clear();
       },
 
       setVideo: (state,action) => {
+     
         state.todoList.push(action.payload); 
-        
+        localStorage.setItem("state", JSON.stringify(state.todoList));
     },
 
     setSort: (state, action) => {
