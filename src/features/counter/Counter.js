@@ -128,11 +128,11 @@ export function Counter() {
     <div className='input'>
     <input type="text" value={incrementAmount} 
       onChange={e => setIncrementAmount(e.target.value)} />
-    </div>
-      <div className="buttonActions">
-        <button 
+       <button 
             onClick={addTodo} >
         Add! </button>
+    </div>
+      <div className="buttonActions">
         <button 
             onClick={changeVisible}>
         Visible </button>
@@ -144,7 +144,7 @@ export function Counter() {
         Demo </button>
         <button style = {isFevorite ? (x) : (y)}
             onClick={handleFevorite}>
-        Fev </button>
+        Favourite </button>
         <button 
             onClick={handleSort}>
         Sort </button>

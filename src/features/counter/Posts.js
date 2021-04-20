@@ -61,9 +61,9 @@ const Posts = ({ id, loading , dispatch,image,title , like, view, published ,vid
             </Col>
 
             <Col sm={2}>
-              <button onClick={handleCheck}>Usuń</button>
-              <button onClick={handleFavorite} style={favorite ? (favoriteTrue) : (favoriteFalse)}>Ulubione</button>
-              <ModalExample buttonLabel={'Zobacz!'} url={url} VimeoOrYoutube={VimeoOrYoutube}/>
+              <button onClick={handleCheck}>Delete</button>
+              <button onClick={handleFavorite} style={favorite ? (favoriteTrue) : (favoriteFalse)}>Favourite</button>
+              <ModalExample buttonLabel={'Show!'} url={url} VimeoOrYoutube={VimeoOrYoutube}/>
             </Col> 
         </Row> 
       </Container>

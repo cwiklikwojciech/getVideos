@@ -52,9 +52,9 @@ const Tiles = ({ id, loading , dispatch,image,title , like, view, published,vide
               <CardTitle tag="h5">{title}</CardTitle>
               <CardSubtitle tag="h6" className="mb-2 text-muted">Published Data : {published}</CardSubtitle>
               <CardText>View : {view} Like : {like}</CardText>
-              <button onClick={handleCheck}>Usuń</button>
-              <button onClick={handleFavorite} style={favorite ? (favoriteTrue) : (favoriteFalse)}>Ulubione</button>
-              <ModalExample buttonLabel={'Zobacz!'} url={url} VimeoOrYoutube={VimeoOrYoutube}/>
+              <button onClick={handleCheck}>Delete</button>
+              <button onClick={handleFavorite} style={favorite ? (favoriteTrue) : (favoriteFalse)}>Favourite</button>
+              <ModalExample buttonLabel={'Show!'} url={url} VimeoOrYoutube={VimeoOrYoutube}/>
               </CardBody>
       </Card>
       </CardGroup>

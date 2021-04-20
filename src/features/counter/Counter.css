@@ -1,8 +1,8 @@
 .input {
 	height: 50px;
 	width: 80%;
-	border-radius: 12px;
-	background-color: rgb(0 123 255 / 25%);
+	border-radius: 6px;
+	border: 2px solid dimgray;
 	display: flex;
 	justify-content: center;
 	align-items: center;
