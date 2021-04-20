@@ -12,13 +12,15 @@ import {selectIsFevorite} from './features/counter/counterSlice'
 import {selectIsSort} from './features/counter/counterSlice'
 import { Container, Row, Col } from 'react-grid-system';
 
+require('dotenv').config();
+
 function App() {
   const todoList = useSelector(selectTodoList);
   const isVisible = useSelector(selectIsVisible);
   const isFevorite = useSelector(selectIsFevorite);
   const isSort = useSelector(selectIsSort);
 
-  
+  console.log(process.env.API_KEY);
   
   return (
     <div className="App">

@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import TodoItem from './TodoItem';
 
 const data = localStorage.getItem("state");
-console.log(JSON.parse(data));
 
 const initialState = {
   todoList: data ? JSON.parse(data) : [],

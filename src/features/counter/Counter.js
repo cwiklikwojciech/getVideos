@@ -5,6 +5,7 @@ import {setClear,  setVideo , setVisible, setFevorite, setSort} from './counterS
 import './Counter.css';
 
 export function Counter() {
+  
     const dispatch = useDispatch();
     const [incrementAmount, setIncrementAmount] = useState('');
     const [isVisible, setIsVisible] = useState(true);
@@ -97,7 +98,7 @@ export function Counter() {
     }
 
     const getYoutube = (id) => {
-      fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=AIzaSyDPQ653rSjnsN9tmexU7CmkDKc5t_2t5Jo&part=snippet,contentDetails,statistics,status`)
+      fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${process.env.REACT_APP_GOOGLE_API_KEY}&part=snippet,contentDetails,statistics,status`)
       .then(response => response.json())
       .then(data => 
         dispatch(setVideo({
