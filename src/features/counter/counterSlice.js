@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import TodoItem from './TodoItem';
 
 const data = localStorage.getItem("state");
 

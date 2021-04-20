@@ -21,10 +21,10 @@ export function Counter() {
       }
       else {
         let result = str.substring(str.lastIndexOf(separator)+1);
-        result =  result != str ? result : false;
+        result =  result !== str ? result : false;
         if(result.length > 11 ) {
           result = str.substring(str.lastIndexOf('=')+1);
-          result =  result != str ? result : false;
+          result =  result !== str ? result : false;
         }
         return result;
       } 

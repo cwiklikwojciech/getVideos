@@ -1,16 +1,13 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import { Counter } from './features/counter/Counter';
 import './App.css';
 import TodoItem from './features/counter/TodoItem';
-import Posts from './features/counter/Posts';
 
 import {useSelector} from 'react-redux'
 import {selectTodoList} from './features/counter/counterSlice'
 import {selectIsVisible} from './features/counter/counterSlice'
 import {selectIsFevorite} from './features/counter/counterSlice'
 import {selectIsSort} from './features/counter/counterSlice'
-import { Container, Row, Col } from 'react-grid-system';
 
 require('dotenv').config();
 
@@ -20,7 +17,6 @@ function App() {
   const isFevorite = useSelector(selectIsFevorite);
   const isSort = useSelector(selectIsSort);
 
-  console.log(process.env.API_KEY);
   
   return (
     <div className="App">

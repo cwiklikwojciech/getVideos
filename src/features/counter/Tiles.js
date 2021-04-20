@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
-import {setCheck, setVideo, setFavorite} from './counterSlice'
+import React from 'react'
+import {setCheck, setFavorite} from './counterSlice'
 
 import {
-    Card, Button, CardImg, CardTitle, CardText, CardGroup,
+    Card, CardImg, CardTitle, CardText, CardGroup,
     CardSubtitle, CardBody
   } from 'reactstrap';
 
@@ -41,13 +41,6 @@ const Tiles = ({ id, loading , dispatch,image,title , like, view, published,vide
       background: 'none'
     };
 
-    const x = {
-      display: 'none'
-    };
-    const y = {
-      display: 'block'
-    };
-    
 
   return (
     <>  

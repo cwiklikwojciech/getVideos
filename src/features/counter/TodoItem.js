@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import axios from 'axios'
 
 import './TodoItem.css'
 
@@ -7,9 +6,7 @@ import Posts from './Posts';
 import Tiles from './Tiles';
 import Pagination from './Pagination';
 
-
-
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row } from 'react-grid-system';
 import {useDispatch} from 'react-redux'
 
 

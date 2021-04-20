@@ -1,11 +1,9 @@
-import React,{useState} from 'react'
+import React from 'react'
 
 import {setCheck, setFavorite} from './counterSlice'
 import { Container, Row, Col } from 'react-grid-system';
 
 import ModalExample from "./reactPlayer";
-
-
 import './Posts.css'
 
 const Posts = ({ id, loading , dispatch,image,title , like, view, published ,video, favorite  }) => {
@@ -40,12 +38,6 @@ const Posts = ({ id, loading , dispatch,image,title , like, view, published ,vid
     VimeoOrYoutube = true;
   }
 
-  const x = {
-    display: 'none'
-  };
-  const y = {
-    display: 'block'
-  };
 
   return (
   <>
