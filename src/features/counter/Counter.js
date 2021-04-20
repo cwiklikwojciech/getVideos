@@ -98,7 +98,7 @@ export function Counter() {
     }
 
     const getYoutube = (id) => {
-      fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${process.env.REACT_APP_GOOGLE_API_KEY}&part=snippet,contentDetails,statistics,status`)
+      fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=AIzaSyDPQ653rSjnsN9tmexU7CmkDKc5t_2t5Jo&part=snippet,contentDetails,statistics,status`)
       .then(response => response.json())
       .then(data => 
         dispatch(setVideo({
@@ -108,7 +108,7 @@ export function Counter() {
           imageSmall: data.items[0].snippet.thumbnails.default.url,
           title : data.items[0].snippet.title,
           published : data.items[0].snippet.publishedAt,
-          video : lastPartAfterSign(id),
+          video :  lastPartAfterSign(incrementAmount),
           done: false,
           favorite : false,
           id: Date.now(),
@@ -124,27 +124,31 @@ export function Counter() {
     };
 
   return (
+    <>
     <div className='input'>
     <input type="text" value={incrementAmount} 
       onChange={e => setIncrementAmount(e.target.value)} />
-    <button 
-        onClick={addTodo} >
-    Add! </button>
-    <button 
-        onClick={changeVisible}>
-    Visible </button>
-    <button 
-        onClick={handleClear}>
-    Clear </button>
-    <button 
-        onClick={hendledemo}>
-    Demo </button>
-    <button style = {isFevorite ? (x) : (y)}
-        onClick={handleFevorite}>
-    Fev </button>
-    <button 
-        onClick={handleSort}>
-    Sort </button>
-</div>
+    </div>
+      <div className="buttonActions">
+        <button 
+            onClick={addTodo} >
+        Add! </button>
+        <button 
+            onClick={changeVisible}>
+        Visible </button>
+        <button 
+            onClick={handleClear}>
+        Clear </button>
+        <button 
+            onClick={hendledemo}>
+        Demo </button>
+        <button style = {isFevorite ? (x) : (y)}
+            onClick={handleFevorite}>
+        Fev </button>
+        <button 
+            onClick={handleSort}>
+        Sort </button>
+    </div>
+</>
   );
 }
