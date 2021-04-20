@@ -4,7 +4,7 @@ GetVideos is a React Application to creating your own libraries.
 
 ## Installation
 
-Use the gh repo clone
+Use
 
 ```bash
 gh repo clone cwiklikwojciech/getVideos
@@ -13,10 +13,9 @@ gh repo clone cwiklikwojciech/getVideos
 ## Usage
 
 ```javascript
-
+    
 ```
 
 ## Contributing
 
 
-## License
