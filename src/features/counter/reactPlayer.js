@@ -13,7 +13,6 @@ const ModalExample = (props) => {
   } = props;
 
   const [modal, setModal] = useState(false);
-//   const url = `https://www.youtube.com/watch?v=${video}`
 
   const toggle = () => setModal(!modal);
 
@@ -26,19 +25,19 @@ const ModalExample = (props) => {
 
         {VimeoOrYoutube ? (
             <div className='player-wrapper'>
-            <ReactPlayer
-                className='react-player'
-                url= {url}
-                width='100%'
-                height='100%'
-            />
-        </div>
+              <ReactPlayer
+                  className='react-player'
+                  url= {url}
+                  width='100%'
+                  height='100%'
+              />
+            </div>
         ):
         (
             <div className='player-wrapper-vimeo'>
-            <Vimeo
-            video="181696349"
-            />
+              <Vimeo
+                video="181696349"
+              />
             </div>
         )}
        

@@ -5,11 +5,11 @@ import {setClear,  setVideo , setVisible, setFevorite, setSort} from './counterS
 import './Counter.css';
 
 export function Counter() {
-  const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('');
-  const [isVisible, setIsVisible] = useState(true);
-  const [isFevorite, setIsFevorite] = useState(true);
-  const [isSort, setIsSort] = useState(false);
+    const dispatch = useDispatch();
+    const [incrementAmount, setIncrementAmount] = useState('');
+    const [isVisible, setIsVisible] = useState(true);
+    const [isFevorite, setIsFevorite] = useState(true);
+    const [isSort, setIsSort] = useState(false);
 
     const lastPartAfterSign = (str, separator='/') => {
       var stringSarach = str; 
@@ -28,11 +28,6 @@ export function Counter() {
         return result;
       } 
     }
-
-
-    
-
-    
 
     const addTodo = () => {
       let id = lastPartAfterSign(incrementAmount);
@@ -83,7 +78,6 @@ export function Counter() {
     }
 
     const getVimeo = (id) => {
-  
       fetch(`https://vimeo.com/api/v2/video/${id}/json`)
         .then(response => response.json())
         .then(data => 
@@ -94,7 +88,7 @@ export function Counter() {
             imageSmall: data[0].thumbnail_large,
             title : data[0].title,
             published : data[0].upload_date,
-            video : lastPartAfterSign(incrementAmount),
+            video : lastPartAfterSign(id),
             done: false,
             favorite : false,
             id: Date.now(),
@@ -113,7 +107,7 @@ export function Counter() {
           imageSmall: data.items[0].snippet.thumbnails.default.url,
           title : data.items[0].snippet.title,
           published : data.items[0].snippet.publishedAt,
-          video : lastPartAfterSign(incrementAmount),
+          video : lastPartAfterSign(id),
           done: false,
           favorite : false,
           id: Date.now(),
@@ -150,7 +144,6 @@ export function Counter() {
     <button 
         onClick={handleSort}>
     Sort </button>
-    
 </div>
   );
 }
