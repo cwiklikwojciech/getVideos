@@ -9,13 +9,15 @@ import {selectIsVisible} from './features/counter/counterSlice'
 import {selectIsFevorite} from './features/counter/counterSlice'
 import {selectIsSort} from './features/counter/counterSlice'
 
-require('dotenv').config();
+
 
 function App() {
   const todoList = useSelector(selectTodoList);
   const isVisible = useSelector(selectIsVisible);
   const isFevorite = useSelector(selectIsFevorite);
   const isSort = useSelector(selectIsSort);
+
+  require('dotenv').config();
 
   
   return (

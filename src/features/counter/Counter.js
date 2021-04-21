@@ -4,6 +4,7 @@ import {setClear,  setVideo , setVisible, setFevorite, setSort} from './counterS
 
 import './Counter.css';
 
+
 export function Counter() {
   
     const dispatch = useDispatch();
@@ -98,7 +99,7 @@ export function Counter() {
     }
 
     const getYoutube = (id) => {
-      fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=AIzaSyDPQ653rSjnsN9tmexU7CmkDKc5t_2t5Jo&part=snippet,contentDetails,statistics,status`)
+      fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${process.env.REACT_APP_API_KEY}&part=snippet,contentDetails,statistics,status`)
       .then(response => response.json())
       .then(data => 
         dispatch(setVideo({
@@ -108,7 +109,7 @@ export function Counter() {
           imageSmall: data.items[0].snippet.thumbnails.default.url,
           title : data.items[0].snippet.title,
           published : data.items[0].snippet.publishedAt,
-          video :  lastPartAfterSign(incrementAmount),
+          video :  lastPartAfterSign(id),
           done: false,
           favorite : false,
           id: Date.now(),
