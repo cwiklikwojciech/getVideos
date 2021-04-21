@@ -18,8 +18,8 @@ $ npm install
 The application is designed to store the user's favorite videos within the site.
 
 Videos are listed with data such as
-● number of plays
-● number of likes
+* Item 1● number of plays
+* Item 2● number of likes
 ● name of the movie
 ● movie thumbnail
 ● date of adding to the library
